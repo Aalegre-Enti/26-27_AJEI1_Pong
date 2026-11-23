@@ -4,6 +4,7 @@ public class MovimientoPelota : MonoBehaviour
 {
     public float speed;
     Vector3 dir;
+    public GestorPuntuacion puntuacion;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,6 +33,18 @@ public class MovimientoPelota : MonoBehaviour
         {
             transform.position = new Vector3(0, 0);
             Spawn();
+            if (collision.gameObject.name == "Porteria A")
+            {
+                Debug.Log("El jugador B ha marcado al jugador A");
+
+                puntuacion.puntuacionB = puntuacion.puntuacionB + 1;
+            }
+            if (collision.gameObject.name == "Porteria B")
+            {
+                Debug.Log("El jugador A ha marcado al jugador B");
+
+                puntuacion.puntuacionA = puntuacion.puntuacionA + 1;
+            }
         }
     }
 
